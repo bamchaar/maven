@@ -1,9 +1,8 @@
-FROM maven:3.9-jdk-11 AS build  
-COPY src /usr/src/app/src  
-COPY pom.xml /usr/src/app  
-RUN mvn -f /usr/src/app/pom.xml clean package
+FROM openjdk:8-alpine AS build  
+EXPOSE 8080
+COPY ./target/my-app-1.0-SNAPSHOT.jar /usr/app 
+WORKDIR /usr/app
 
 FROM gcr.io/distroless/java  
-COPY --from=build /usr/src/app/target/helloworld-1.0.0-SNAPSHOT.jar /usr/app/helloworld-1.0.0-SNAPSHOT.jar  
-EXPOSE 8080  
-ENTRYPOINT ["java","-jar","/usr/app/helloworld-1.0.0-SNAPSHOT.jar"]  
+
+ENTRYPOINT ["java","-jar","my-app-1.0-SNAPSHOT.jar"]  
