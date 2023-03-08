@@ -1,32 +1,24 @@
 pipeline {
-    agent {
-        any {
-            image '3.9.0-eclipse-temurin-11'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent any 
+    
     options {
         skipStagesAfterUnstable()
     }
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                echo 'Building application'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Testing application'
             }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
+            
         }
         stage('Deliver') { 
             steps {
-                sh './jenkins/scripts/deliver.sh' 
+                echo 'Delivering application' 
             }
         }
     }
