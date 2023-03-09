@@ -37,7 +37,7 @@ pipeline {
 				withCredentials([usernamePassword(credentialsId: 'tcpipeline',passwordVariable: 'PASS' , usernameVariable: 'USER')]){
 				sh 'docker build -t tcdmv/mvn-app:java-mvn-2.0 .'
 				sh "echo $PASS | docker login -u $USER --password-stdin"
-				sh 'docker push tcdmv/mvn-app:java-mvn-2.0
+				sh 'docker push tcdmv/mvn-app:java-mvn-2.0'
 				}
 				}
             }
