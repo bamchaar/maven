@@ -1,11 +1,10 @@
-CODE_CHANGES = getGitChanges()
 pipeline {
     agent any 
     environment {
     NEW_VERSION = '1.3.0'
     } 
     options {
-        skipStagesAfterUnstable()
+        //
     }
     stages {
         stage('Build') {
