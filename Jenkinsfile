@@ -33,7 +33,7 @@ pipeline {
                 echo 'Delivering application' 
             }
         }
-    }
+    
     post{
     	always{
     		//
