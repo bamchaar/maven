@@ -22,22 +22,7 @@ pipeline {
     		}
     		}
     	}
-        stage('Build jar') {
-            steps {
-				script{
-				gv.BuildJar()
-				}
-            }
-        }
-        stage('Build image') {
-            steps {
-				script{
-				gv.BuildImage()
-				}
-				
-            }
-        }        
-        stage('Test') {
+    	stage('Test') {
         	when{
         		expression{
         			params.executeTest
@@ -54,7 +39,38 @@ pipeline {
                 }
             }
         }
+        stage('Build jar') {
+                	when{
+        		expression{
+        			BRANCH_NAME == 'master'
+        		}
+        	}
+            steps {
+				script{
+				gv.BuildJar()
+				}
+            }
+        }
+        stage('Build image') {
+                	when{
+        		expression{
+        			BRANCH_NAME == 'master'
+        		}
+        	}        
+            steps {
+				script{
+				gv.BuildImage()
+				}
+				
+            }
+        }        
+        
         stage('Deploy') {
+                	when{
+        		expression{
+        			BRANCH_NAME == 'master'
+        		}
+        	}        
         	input{
         		message "Select the environment to deploy"
         		ok "Done"
@@ -72,6 +88,11 @@ pipeline {
             }
         }
         stage('Deliver') { 
+                	when{
+        		expression{
+        			BRANCH_NAME == 'master'
+        		}
+        	}        
             steps {
 				script{
 				env.REPO = input message:"Select the repo to deliver to", ok: "Done", parameters:[choice(name: 'environment1', choices: ['DockerHub', 'Nexus', 'AWS-ECR'], description:'')]
