@@ -1,3 +1,4 @@
+def gv
 pipeline {
     agent any
     options {
@@ -14,11 +15,18 @@ pipeline {
     	NEW_VERSION = '1.3.0'
     }
     stages {
+    	stage("init"){
+    	steps{
+    		script{
+    			gv = load "script.groovy"
+    		}
+    		}
+    	}
         stage('Build') {
             steps {
-                echo 'Build stage'
-                echo "Build version ${NEW_VERSION}"
-                sh 'mvn -v'
+				script{
+				gv.BuildApp()
+				}
             }
         }
         stage('Test') {
@@ -28,7 +36,9 @@ pipeline {
         		}
         	}
             steps {
-                echo 'Test stage'
+				script{
+				gv.TestdApp()
+				}
             }
             post {
                 always {
@@ -38,8 +48,9 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                echo 'Deliver stage' 
-                echo "Deploying version ${params.version}"
+				script{
+				gv.DeliverApp()
+				}
             }
         }
     }
