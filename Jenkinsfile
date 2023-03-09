@@ -3,9 +3,6 @@ pipeline {
     environment {
     NEW_VERSION = '1.3.0'
     } 
-    options {
-        //
-    }
     stages {
         stage('Build') {
         when {
@@ -23,6 +20,7 @@ pipeline {
         	expression{
         		BRANCH_NAME == 'dev'
         	}
+        	}
             steps {
                 echo 'Testing application'
             }
@@ -34,9 +32,4 @@ pipeline {
             }
         }
     
-    post{
-    	always{
-    		//
-    	}
-    }
 }
