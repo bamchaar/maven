@@ -12,7 +12,7 @@ pipeline {
     	booleanParam(name: 'executeTest', defaultValue: true, description: '')
     }
     environment{
-    	NEW_VERSION = '1.3.0'
+    	NEW_VERSION = '2.0'
     }
     stages {
     	stage("init"){
