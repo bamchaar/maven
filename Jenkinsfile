@@ -6,6 +6,10 @@ pipeline {
     tools{
     maven 'mvn-3.9'
     }
+    parameters {
+    	choice(name: 'version', choices: ['1.1.0', '1.2.0', '1.3.0', description:'')
+    	booleanParam(name: 'executeTest', defaultValue: true, description: '')
+    }
     environment{
     	NEW_VERSION = '1.3.0'
     }
@@ -18,6 +22,11 @@ pipeline {
             }
         }
         stage('Test') {
+        	when{
+        		expression{
+        			params.executeTest
+        		}
+        	}
             steps {
                 echo 'Test stage'
             }
@@ -30,6 +39,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 echo 'Deliver stage' 
+                echo "Deploying version ${version}"
             }
         }
     }
