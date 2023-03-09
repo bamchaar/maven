@@ -1,21 +1,12 @@
-def gv
 pipeline {
     agent any
     tools{
     maven 'mvn-3.9'
     }
     stages {
-    	stage("init"){
-    	steps{
-    		script{
-    			gv = load "script.groovy"
-    		}
-    		}
-    	}
         stage('Build jar') {
             steps {
 				script{
-				gv.BuildApp()
 				sh'mvn package'
 				}
             }
