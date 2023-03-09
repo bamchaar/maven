@@ -5,22 +5,13 @@ pipeline {
     } 
     stages {
         stage('Build') {
-        when {
-        	expression{
-        		BRANCH_NAME == 'dev' && CODE_CHANGES == true
-        	}
-        }
             steps {
                 echo 'Building application'
                 echo "Building version is ${NEW_VERSION}"
             }
         }
         stage('Test') {
-                when {
-        	expression{
-        		BRANCH_NAME == 'dev'
-        	}
-        	}
+
             steps {
                 echo 'Testing application'
             }
