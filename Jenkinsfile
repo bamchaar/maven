@@ -34,7 +34,7 @@ pipeline {
 				script{
 				gv.BuildImage()
 				}
-				}
+				
             }
         }        
         stage('Test') {
