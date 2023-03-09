@@ -7,15 +7,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application'
-                echo "Building version is ${NEW_VERSION}"
             }
         }
         stage('Test') {
-
             steps {
                 echo 'Testing application'
-            }
-            
+            } 
         }
         stage('Deliver') { 
             steps {
