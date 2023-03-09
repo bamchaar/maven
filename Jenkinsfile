@@ -9,14 +9,4 @@ pipeline {
                 echo 'Building application'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing application'
-            } 
-        }
-        stage('Deliver') { 
-            steps {
-                echo 'Delivering application' 
-            }
-        }
-    }
+}
