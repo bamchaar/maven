@@ -12,7 +12,7 @@ pipeline {
     	booleanParam(name: 'executeTest', defaultValue: true, description: '')
     }
     environment{
-    	NEW_VERSION = '2.0'
+    	NEW_VERSION = 'multiServices3.0'
     }
     stages {
     	stage("init"){
