@@ -3,6 +3,9 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    tools{
+    maven 'mvn-3.9'
+    }
     environment{
     	NEW_VERSION = '1.3.0'
     }
@@ -11,6 +14,7 @@ pipeline {
             steps {
                 echo 'Build stage'
                 echo "Build version ${NEW_VERSION}"
+                sh 'mvn -v'
             }
         }
         stage('Test') {
