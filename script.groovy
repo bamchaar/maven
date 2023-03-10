@@ -1,13 +1,4 @@
-def BuildJar(){
-    echo 'Build mvnApp application'
-    echo "Build version ${NEW_VERSION}"
-    sh'mvn package'
-}
-def BuildImage(){
-    echo 'Build Docker image'
-    echo "Build version ${NEW_VERSION}"
-    sh'mvn package'
-}
+
 def TestApp(){
     echo 'Testing stage'
 }

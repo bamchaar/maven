@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+@Library('jenkins-shared-repo')
 def gv
 pipeline {
     agent any
@@ -47,7 +49,7 @@ pipeline {
         	}
             steps {
 				script{
-				gv.BuildJar()
+				buildJar()
 				}
             }
         }
@@ -59,7 +61,7 @@ pipeline {
         	}        
             steps {
 				script{
-				gv.BuildImage()
+				buildImage()
 				}
 				
             }
