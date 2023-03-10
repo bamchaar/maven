@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@bamchaar 
-bamchaar
-/
-maven
-Public
-Fork your own copy of bamchaar/maven
-Code
-Issues
-Pull requests
-Projects
-Wiki
-Security
-Insights
-Settings
-maven/Jenkinsfile
-@bamchaar
-bamchaar solved conflicts
-Latest commit 922372d 3 minutes ago
- History
- 1 contributor
-109 lines (105 sloc)  2.27 KB
-
 #!/usr/bin/env groovy
 
 @Library('jenkins-shared-repo')
@@ -137,18 +107,4 @@ pipeline {
         }
     }
 }
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-maven/Jenkinsfile at master · bamchaar/maven
+
