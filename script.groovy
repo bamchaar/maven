@@ -10,7 +10,7 @@ def buildImage() {
 def buildJar() {
     echo 'Build mvnApp application'
     echo "Build version ${NEW_VERSION}"
-    sh'mvn package'
+    sh'mvn clean package'
 }
 def TestApp(){
     echo 'Testing stage'
