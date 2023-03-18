@@ -1,4 +1,16 @@
-
+def buildImage() {
+    echo 'Building Docker image'
+    withCredentials([usernamePassword(credentialsId: 'tcdmvPipeLine', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        sh 'docker build -t tcdmv/mvn-app:java-mvn-2.0 .'
+        sh "echo $PASS | docker login -u $USER --password-stdin"
+        sh 'docker push tcdmv/mvn-app:java-mvn-2.0'
+    }
+}
+def buildJar() {
+    echo 'Build mvnApp application'
+    echo "Build version ${NEW_VERSION}"
+    sh'mvn package'
+}
 def TestApp(){
     echo 'Testing stage'
 }
