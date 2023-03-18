@@ -55,7 +55,7 @@ pipeline {
        
             steps {
 				script{
-				buildImage()
+				gv.buildImage()
 				}
 				
             }
