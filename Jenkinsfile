@@ -44,11 +44,7 @@ pipeline {
             }
         }
         stage('Build jar') {
-                	when{
-        		expression{
-        			env.BRANCH_NAME == 'master'
-        		}
-        	}
+
             steps {
 				script{
 				gv.buildJar()
@@ -56,11 +52,7 @@ pipeline {
             }
         }
         stage('Build image') {
-                	when{
-        		expression{
-        			env.BRANCH_NAME == 'master'
-        		}
-        	}        
+       
             steps {
 				script{
 				buildImage()
