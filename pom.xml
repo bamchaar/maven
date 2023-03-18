@@ -28,6 +28,24 @@
   <build>
     <pluginManagement>
       <plugins>
+		  <plugin>
+      <groupId>org.eclipse.tycho</groupId>
+      <artifactId>tycho-versions-plugin</artifactId>
+      <version>1.5.0</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>set-version</goal>
+            <goal>update-pom</goal>
+            <goal>update-eclipse-metadata</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+		  <plugin>    
+			    <groupId>gradle.plugin.uk.co.littlemike.build.version</groupId>
+			    <artifactId>build-version-plugin</artifactId>
+			    <version>0.9</version></plugin>
 		  <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
 		<plugin>
 		    <groupId>org.springframework.boot</groupId>
